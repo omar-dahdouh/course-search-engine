@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 
 router.get('/test', (req, res) => {
 
-    res.jsons({
+    res.json({
         message: 'hello!',
     })
 })
