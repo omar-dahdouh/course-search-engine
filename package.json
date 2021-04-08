@@ -1,6 +1,9 @@
 {
   "name": "server",
   "version": "1.0.0",
+  "engines": {
+    "node": "v12.18.2"
+  },
   "description": "",
   "main": "index.js",
   "directories": {
