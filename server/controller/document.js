@@ -17,9 +17,10 @@ async function readDocs(pos, len) {
     const arr = Array(len);
     for (let i=0; i<len; i++) {
         const id = readUInt24(buff, i*9);
-        const link = buff.readUInt32LE(i*9 + 3);
+        // const link = buff.readUInt32LE(i*9 + 3);
         const count = buff.readUInt16LE(i*9 + 7);
-        arr[i] = [id, await posBufferRead(link, count)];
+        // arr[i] = [id, await posBufferRead(link, count)];
+        arr[i] = [id, count];
     }
 
     return arr;

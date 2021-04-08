@@ -22,8 +22,14 @@ function docIntersect(arr) {
     return list;
 }
 
+function parseWords(text) {
+    return text.toLowerCase()
+        .replace(/[^a-zA-Z0-9 ]+/g, ' ')
+        .trim().split(/\s+/);
+}
+
 async function search(req, res) {
-    const words = req.params.words.split(' ');
+    const words = parseWords(req.params.words)
     
     const lists = [];
     for (const word of words) {
@@ -31,8 +37,7 @@ async function search(req, res) {
     }
 
     const docs = docIntersect(lists)
-        .map(([id, pos]) => [id, pos, pos.length/pos[0]])
-        .sort((a,b) => b[2]-a[2]);
+        .sort((a,b) => b[1]-a[1]);
     
     const results = [];
     for (const [docID] of docs.slice(0, 20)) {
