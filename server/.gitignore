@@ -1,7 +1,7 @@
 /node_modules
-server/data/dataBuffer.bin
-server/data/docBuffer.bin
-server/data/posBuffer.bin
+/server/data/dataBuffer.bin
+/server/data/docBuffer.bin
+/server/data/posBuffer.bin
 config.env
 .env
 .DS_Store
