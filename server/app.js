@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const routes = require('./router');
 
+app.set('port', process.env.PORT || 5000);
+
 app.use(express.static('public'));
 app.use(routes);
 
