@@ -2,3 +2,7 @@
 config.env
 .env
 .DS_Store
+
+server/data/dataBuffer.bin
+server/data/docBuffer.bin
+server/data/posBuffer.bin
