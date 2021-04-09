@@ -5,7 +5,7 @@
     left: 0;
     right: 0;
     
-    background-color: #333;
+    background-color: #444;
     box-shadow: 0 2px 2px #000;
     z-index: 100;
 }
@@ -31,7 +31,7 @@
 }
 
 .aside {
-    position: absolute;
+    position: fixed;
     width: 25%;
     right: 8.333333%;
     height: 100%;
@@ -138,11 +138,10 @@
 }
 
 .message {
-    font: 32px Verdana;
+    font: 36px tahoma;
     width: 100%;
-    /* background-color: orchid; */
     /* text-align: center; */
-    color: #555;
+    color: #777;
 }
 
 .source-image {
@@ -154,12 +153,8 @@
 
 .source-table {
     width: 100%;
-    /* background-color: palevioletred; */
 }
 .source-table td {
-    /* text-decoration: none; */
-    font: 24px Verdana;
+    font: 24px tahoma;
     color: #222;
-    /* padding: 10px; */
-    /* background-color: paleturquoise; */
 }

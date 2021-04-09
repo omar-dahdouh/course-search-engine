@@ -1,6 +1,8 @@
 const { getDocs } = require('./document');
 const { getCourse } = require('./course');
+const { searchValidation } = require('./validation');
 
+// binary search tree
 function docFind(list, docID) {
     let pos = 0;
     while (pos < list.length) {
@@ -22,14 +24,12 @@ function docIntersect(arr) {
     return list;
 }
 
-function parseWords(text) {
-    return text.toLowerCase()
-        .replace(/[^a-zA-Z0-9 ]+/g, ' ')
-        .trim().split(/\s+/);
-}
-
 async function search(req, res) {
-    const words = parseWords(req.params.words)
+    const originalQuery = req.body.query;
+    const {query, skip} = searchValidation(req.body);
+
+    const words = query;
+    const size = 12;
     
     const lists = [];
     for (const word of words) {
@@ -40,13 +40,16 @@ async function search(req, res) {
         .sort((a,b) => b[1]-a[1]);
     
     const results = [];
-    for (const [docID] of docs.slice(0, 20)) {
+    for (const [docID] of docs.slice(skip, skip+size)) {
         results.push(await getCourse(docID));
     }
 
     res.json({
         results,
         total: docs.length,
+        query: originalQuery,
+        skip,
+        size,
     });
 }
 
