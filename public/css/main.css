@@ -84,6 +84,22 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.card-image-date {
+    position: absolute;
+    width: 100%;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    bottom: 0;
+    font-weight: bold;
+    font: 16px Verdana;
+    white-space: nowrap;
+    color: #fff;
+    background-color: rgba(0,0,0, 0.5);
+    text-shadow: 2px 2px rgba(0,0,0, 0.5);
+}
+
 .card-content {
     position: absolute;
     left: 25%;

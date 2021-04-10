@@ -19,7 +19,14 @@ function docIntersect(arr) {
     let list = lists[0] || [];
 
     for (let i=1; i<lists.length; i++) {
-        list = list.filter(([docID]) => docFind(lists[i], docID));
+        list = list.filter(doc => {
+            let fff = docFind(lists[i], doc[0]);
+            if (fff) {
+                doc[1] += fff[1];
+                return true;
+            }
+            return false;
+        });
     }
     return list;
 }

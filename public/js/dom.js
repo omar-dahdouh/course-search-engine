@@ -1,8 +1,13 @@
 function createCard(course) {
+    const imageDate = document.createElement('span');
+    imageDate.className = 'card-image-date'; 
+    imageDate.textContent = new Date(course.date).toLocaleDateString();
+
     const image = document.createElement('div');
     image.className = 'card-image';
     image.style.backgroundImage = `url(${images[course.src](course.image)})`;
-
+    image.appendChild(imageDate);
+  
     const title = document.createElement('a');
     title.className = 'card-title';
     title.href = links[course.src](course.url);
