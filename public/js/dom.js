@@ -1,3 +1,6 @@
+const resultsContainer = document.querySelector('#results-container');
+const suggestionsContainer = document.querySelector('#suggestions')
+
 function createCard(course) {
     const imageDate = document.createElement('span');
     imageDate.className = 'card-image-date'; 
@@ -76,3 +79,62 @@ function createPagesList(count, selected=0) {
 
     return pagesList;
 }
+
+function renderResults(data) {
+    const pageCount = Math.ceil(data.total / data.size);
+
+    resultsContainer.innerHTML = '';
+    
+    if (data.results.length === 0) {
+        const message = document.createElement('p');
+        message.classList = 'message';
+        if (queryText == '') {
+            message.textContent = 'type somthing to start ...';
+        } else {
+            message.textContent = `no results for "${queryText}"`;
+        }
+        resultsContainer.appendChild(message);
+    } else {
+        for (const course of data.results) {
+            const card = createCard(course);
+            resultsContainer.appendChild(card);
+        }
+        for (let i=0; i<6; i++) {
+            resultsContainer.appendChild( document.createElement('br') )
+        }
+    }
+
+    pages.innerHTML = '';
+    pages.appendChild( createPagesCount(data.total) );
+    pages.appendChild( createPagesList(pageCount, pageNumber) );
+}
+
+function renderSuggestions(list, selected=0) {
+    suggestionsContainer.innerHTML = '';
+    if (list.length === 0) {
+        suggestionsContainer.style.display = 'none';
+    } else {
+        suggestionsContainer.style.display = 'block';
+        for (let i=0; i<list.length; i++) {
+            const [text, count] = list[i];
+            const element = document.createElement('li');
+
+            element.className = 'suggestions-item';
+            element.textContent = text;
+            element.itemIndex = i;
+            element.onmousedown =  onSuggestionClick;
+            if (i === selected) {
+                element.classList.add('selected');
+            }
+
+            const span = document.createElement('span');
+            span.textContent = count;
+            element.appendChild(span)
+
+            suggestionsContainer.appendChild(element);
+        }
+    }
+
+    
+}
+
