@@ -1,6 +1,7 @@
 const router = require('express').Router();
-const { search } = require('./controller/search');
+const { search, suggest } = require('./controller/search');
 
 router.post('/search', search);
+router.post('/suggest', suggest);
 
 module.exports = router;

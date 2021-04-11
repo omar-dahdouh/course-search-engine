@@ -7,13 +7,17 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/results.css">
     <link rel="stylesheet" href="css/pagination.css">
+    <link rel="stylesheet" href="css/suggestions.css">
 </head>
 <body>
     <div class="topnav">
         <div class="search">
             <input type="text" id="search-input">
+            <ul id="suggestions"></ul>
         </div>
+        <div class="logo">search engine</div>
     </div>
     <div class="content">
         <div class="results" id="results-container">
@@ -41,6 +45,7 @@
 
     <script src="./js/sourceInfo.js"></script>
     <script src="./js/dom.js"></script>
+    <script src="./js/searchInput.js"></script>
     <script src="./js/index.js"></script>
 </body>
 </html>

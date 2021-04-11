@@ -1,6 +1,7 @@
 const { getDocs } = require('./document');
 const { getCourse } = require('./course');
 const { searchValidation } = require('./validation');
+const { suggestions } = require('./word');
 
 // binary search tree
 function docFind(list, docID) {
@@ -60,6 +61,25 @@ async function search(req, res) {
     });
 }
 
+function suggest(req, res) {
+    const { query } = req.body;
+
+    if (typeof query !== 'string') {
+        res.json({
+            query,
+            results: [],
+        });
+    } else {
+        const word = query.split(' ').pop();
+        const results = suggestions(word, 8) ;
+        res.json({
+            query,
+            results,
+        });
+    }
+}
+
 module.exports = {
     search,
+    suggest,
 };

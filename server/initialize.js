@@ -8,6 +8,7 @@ const indexPath = join(__dirname, 'data', 'indexBuffer.bin');
 const wordPath = join(__dirname, 'data', 'wordBuffer.bin');
 const docPath = join(__dirname, 'data', 'docBuffer.bin');
 const posPath = join(__dirname, 'data', 'posBuffer.bin');
+const suggPath = join(__dirname, 'data', 'suggestions.bin');
 
 async function initialize() {
     if (!fs.existsSync(dataPath)) {
@@ -26,6 +27,7 @@ async function initialize() {
         docBuffer: await openFile(docPath),
         posBuffer: await openFile(posPath),
         wordBuffer: await fs.promises.readFile(wordPath),
+        suggBuffer: await fs.promises.readFile(suggPath),
     }
 }
 
