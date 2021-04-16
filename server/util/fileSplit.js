@@ -5,7 +5,7 @@ async function fileSplit(name) {
     const filePath = join(__dirname, '..', 'data', `${name}.bin`);
     const buffer = fs.readFileSync(filePath);
     
-    const partSize = 10000000;
+    const partSize = 25000000;
     let index = 0;
 
     for (let i=0; i<buffer.length; i+=partSize) {
